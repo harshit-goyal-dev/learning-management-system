@@ -9,15 +9,17 @@ import java.util.List;
 
 public interface IStudentService {
 
-    public List<Student> findAllExams();
+    public List<Student> findAllStudents();
 
     public Student addStudent(StudentRequestDto studentRequestDto);
 
     public Student getStudentById(long id);
 
-    public Student updateStudentById(long id);
+    public Student updateStudentById(long id, StudentRequestDto studentRequestDto);
 
     public void deleteStudentById(long id);
 
+    public boolean isStudentEnrolledInSubject(long studentId, long subjectId);
 
-}
+
+    }

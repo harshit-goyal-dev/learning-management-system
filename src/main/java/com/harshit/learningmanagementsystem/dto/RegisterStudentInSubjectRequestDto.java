@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SubjectRequestDto {
-    private String name;
+public class RegisterStudentInSubjectRequestDto {
+    long studentId;
 
 }

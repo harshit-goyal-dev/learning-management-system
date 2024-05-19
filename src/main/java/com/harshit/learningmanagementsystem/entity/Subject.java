@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,4 +22,16 @@ public class Subject {
     @ManyToMany
     private List<Student> students;
 
+    public Subject(@NonNull String name) {
+        this.name = name;
+        this.students = new ArrayList<>();
+    }
+
+    public Subject(long id, @NonNull String name) {
+        this(name);
+        this.id = id;
+    }
+    public void addStudentToSubject(Student student){
+        this.students.add(student);
+    }
 }

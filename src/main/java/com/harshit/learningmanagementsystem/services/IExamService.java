@@ -1,5 +1,6 @@
 package com.harshit.learningmanagementsystem.services;
 
+import com.harshit.learningmanagementsystem.dto.EnrollStudentInExamRequestDto;
 import com.harshit.learningmanagementsystem.dto.ExamRequestDto;
 import com.harshit.learningmanagementsystem.entity.Exam;
 
@@ -12,10 +13,10 @@ public interface IExamService{
 
     public Exam getExamById(long id);
 
-    public Exam updateExamById(long id);
+    public Exam updateExamById(long id, ExamRequestDto examRequestDto);
 
     public void deleteExamById(long id);
 
-    public void registerStudentInExam();
+    public Exam enrollStudentInExam(long examId, EnrollStudentInExamRequestDto dto);
 
 }

@@ -24,4 +24,13 @@ public class Student {
 
     @ManyToMany
     private List<Subject> subjects;
+
+    public Student(@NonNull String name) {
+        this.name = name;
+    }
+
+    public Student(long id, @NonNull String name) {
+        this(name);
+        this.id = id;
+    }
 }

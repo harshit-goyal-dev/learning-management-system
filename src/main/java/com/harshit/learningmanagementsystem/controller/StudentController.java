@@ -23,31 +23,35 @@ public class StudentController {
 
     @PostMapping(STUDENT_ENDPOINT)
     public ResponseEntity<Student> addStudent(@RequestBody @Valid StudentRequestDto studentRequestDto){
-        retutn null;
+        return ResponseEntity.ok().body(studentService.addStudent(studentRequestDto));
     }
 
     @GetMapping(STUDENT_ENDPOINT)
     public ResponseEntity<List<Student>> getStudents(){
-        return
+
+        return ResponseEntity.ok().body(studentService.findAllStudents());
     }
 
     @GetMapping(STUDENT_ENDPOINT+"/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable long id){
-        return
+        return ResponseEntity.ok().body(studentService.getStudentById(id));
     }
 
     @PutMapping(STUDENT_ENDPOINT+"/{id}")
-    public ResponseEntity<Student> updateStudentById(){
-        return
+    public ResponseEntity<Student> updateStudentById(@PathVariable long id, StudentRequestDto studentRequestDto){
+        return ResponseEntity.ok().body(studentService.updateStudentById(id,studentRequestDto));
+
     }
 
     @DeleteMapping(STUDENT_ENDPOINT+"/{id}")
     public ResponseEntity<String> deleteStudentById(@PathVariable long id){
-        return
-    }
-
-    @PutMapping
-    public ResponseEntity<Student> enrollStudentInSubject(@RequestBody List<Long> subjectIds){
+        studentService.deleteStudentById(id);
+        return ResponseEntity.ok().body("Deleted Successfully");
 
     }
+
+//    @PutMapping
+//    public ResponseEntity<Student> enrollStudentInSubject(@RequestBody List<Long> subjectIds){
+//
+//    }
 }
