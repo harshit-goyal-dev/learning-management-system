@@ -1,13 +1,17 @@
 package com.harshit.learningmanagementsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "students")
 public class Student {
 
@@ -19,10 +23,14 @@ public class Student {
     @NonNull
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "students")
+    @JsonBackReference
+    //@JsonManagedReference
     private List<Exam> exams;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "students")
+    @JsonBackReference
+    //@JsonManagedReference
     private List<Subject> subjects;
 
     public Student(@NonNull String name) {

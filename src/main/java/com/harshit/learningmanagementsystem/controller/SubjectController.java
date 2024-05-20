@@ -30,7 +30,7 @@ public class SubjectController {
     //register a student in the subject
     @PostMapping(SUBJECT_ENDPOINT+"/{subjectId}")
     public ResponseEntity<Subject> registerStudentInSubject(@PathVariable long subjectId
-            , @RequestBody RegisterStudentInSubjectRequestDto dto){
+            , @RequestBody @Valid RegisterStudentInSubjectRequestDto dto){
         return ResponseEntity.ok().body(subjectService.registerStudentInSubject(subjectId,dto));
 
     }

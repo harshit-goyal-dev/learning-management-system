@@ -1,7 +1,10 @@
 package com.harshit.learningmanagementsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.ArrayList;
@@ -9,6 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "subjects")
 public class Subject {
     @Id
@@ -19,7 +23,9 @@ public class Subject {
     @NonNull
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    //@JsonBackReference
     private List<Student> students;
 
     public Subject(@NonNull String name) {

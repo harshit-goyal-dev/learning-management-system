@@ -29,7 +29,7 @@ public class ExamController {
     //enroll a student for a exam
     @PostMapping(EXAM_ENDPOINT+"/{examId}")
     public ResponseEntity<Exam> addExam(@PathVariable long examId
-            , @RequestBody EnrollStudentInExamRequestDto dto){
+            , @RequestBody @Valid EnrollStudentInExamRequestDto dto){
         return ResponseEntity.ok().body(examService.enrollStudentInExam(examId,dto));
     }
     @GetMapping(EXAM_ENDPOINT)
@@ -43,7 +43,7 @@ public class ExamController {
     }
 
     @PutMapping(EXAM_ENDPOINT+"/{id}")
-    public ResponseEntity<Exam> updateExamById(@PathVariable long id, ExamRequestDto examRequestDto){
+    public ResponseEntity<Exam> updateExamById(@PathVariable long id, @Valid ExamRequestDto examRequestDto){
         return ResponseEntity.ok().body(examService.updateExamById(id,examRequestDto));
 
     }

@@ -1,5 +1,7 @@
 package com.harshit.learningmanagementsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +27,9 @@ public class Exam {
     private  Subject subject;
 
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    //@JsonBackReference
     private List<Student> students;
 
     public Exam(@NonNull Subject subject) {
