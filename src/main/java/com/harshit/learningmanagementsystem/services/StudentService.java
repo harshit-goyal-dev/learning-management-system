@@ -37,11 +37,8 @@ public class StudentService implements IStudentService{
 
     @Override
     public Student updateStudentById(long id,StudentRequestDto studentRequestDto) {
-        Optional<Student> optionalStudent = studentRepository.findById(id);
-        if(!optionalStudent.isPresent())
-            throw new StudentNotFoundException("Student with id "+id+ " doesn't exist");
-
-        Student student = new Student(id,studentRequestDto.getName());
+        Student student = getStudentById(id);
+        student.setName(studentRequestDto.getName());
         return studentRepository.save(student);
     }
 

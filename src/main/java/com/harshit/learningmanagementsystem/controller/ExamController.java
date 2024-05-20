@@ -43,7 +43,7 @@ public class ExamController {
     }
 
     @PutMapping(EXAM_ENDPOINT+"/{id}")
-    public ResponseEntity<Exam> updateExamById(@PathVariable long id, @Valid ExamRequestDto examRequestDto){
+    public ResponseEntity<Exam> updateExamById(@PathVariable long id,@RequestBody @Valid ExamRequestDto examRequestDto){
         return ResponseEntity.ok().body(examService.updateExamById(id,examRequestDto));
 
     }

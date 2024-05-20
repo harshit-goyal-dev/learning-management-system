@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -35,6 +36,9 @@ public class Student {
 
     public Student(@NonNull String name) {
         this.name = name;
+        //
+        this.exams=new ArrayList<>();
+        this.subjects = new ArrayList<>();
     }
 
     public Student(long id, @NonNull String name) {

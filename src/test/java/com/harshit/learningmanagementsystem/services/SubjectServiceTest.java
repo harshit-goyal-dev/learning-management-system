@@ -1,7 +1,9 @@
 package com.harshit.learningmanagementsystem.services;
 
 import com.harshit.learningmanagementsystem.entity.Exam;
+import com.harshit.learningmanagementsystem.entity.Subject;
 import com.harshit.learningmanagementsystem.repository.ExamRepository;
+import com.harshit.learningmanagementsystem.repository.SubjectRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,26 +13,27 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class ExamServiceTest {
+public class SubjectServiceTest {
     @InjectMocks
-    private IExamService examService;
+    private ISubjectService subjectService;
 
     @MockBean
-    private ExamRepository examRepository;
+    private SubjectRepository subjectRepository;
 
     @BeforeEach
     void setup() {
         MockitoAnnotations.initMocks(this);
     }
     @Test
-    public void getAllExams(){
-        List<Exam> exams = Arrays.asList(new Exam());
+    public void getAllSubjects(){
+        List<Subject> subjects = Arrays.asList(new Subject("Maths"), new Subject("English"));
 
-        when(userRepositoryService.findAll()).thenReturn(users);
-        List<User> userList = userService.findAllUsers();
-        assertEquals(2, userList.size());
-        assertEquals("663e24e33a8b25270583c75d", userList.get(0).getId());
+        when(subjectRepository.findAll()).thenReturn(subjects);
+        List<Subject> subjectList = subjectService.findAllSubjects();
+        assertEquals(2, subjectList.size());
+        assertEquals("Maths", subjectList.get(0).getName());
     }
 }

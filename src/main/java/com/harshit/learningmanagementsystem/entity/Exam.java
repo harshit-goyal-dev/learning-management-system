@@ -37,6 +37,11 @@ public class Exam {
         this.students = new ArrayList<>();
     }
 
+    public Exam(long id, @NonNull Subject subject) {
+        this.id = id;
+        this.subject = subject;
+    }
+
     public void addStudentToExam(Student student){
         this.students.add(student);
     }
