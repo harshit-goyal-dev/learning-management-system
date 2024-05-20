@@ -32,6 +32,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handle(StudentNotRegisteredInExamException exception){
         return new ResponseEntity<String>(exception.getMessage().toString(), HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(InvalidNumberFormatException.class)
+    public ResponseEntity<String> handle(InvalidNumberFormatException exception){
+        return new ResponseEntity<String>(exception.getMessage().toString(), HttpStatus.BAD_REQUEST);
+    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handle(Exception exception){
         return new ResponseEntity<String>("Internal Error", HttpStatus.INTERNAL_SERVER_ERROR);
