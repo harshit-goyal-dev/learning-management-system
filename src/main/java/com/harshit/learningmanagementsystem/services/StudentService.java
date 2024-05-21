@@ -44,11 +44,8 @@ public class StudentService implements IStudentService{
 
     @Override
     public void deleteStudentById(long id) {
-        Optional<Student> optionalStudent = studentRepository.findById(id);
-        if(!optionalStudent.isPresent())
-            throw new StudentNotFoundException("Student with id "+id+ " doesn't exist");
-
-        studentRepository.delete(optionalStudent.get());
+        Student student = getStudentById(id);
+        studentRepository.delete(student);
     }
 
     public boolean isStudentEnrolledInSubject(long studentId, long subjectId){

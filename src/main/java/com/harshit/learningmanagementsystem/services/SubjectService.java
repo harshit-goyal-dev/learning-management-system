@@ -41,19 +41,16 @@ public class SubjectService implements ISubjectService{
 
     @Override
     public Subject updateSubjectById(long id) {
-        Optional<Subject> optionalSubject = subjectRepository.findById(id);
-        if(!optionalSubject.isPresent())
-            throw new SubjectNotFoundException("Subject with id "+id+ " doesn't exist");
-        Subject subject = new Subject(id, optionalSubject.get().getName());
-        return subjectRepository.save(subject);
+        Subject subject = getSubjectById(id);
+
+        Subject updatedSubject = new Subject(id, subject.getName());
+        return subjectRepository.save(updatedSubject);
     }
 
     @Override
     public void deleteSubjectById(long id) {
-        Optional<Subject> optionalSubject = subjectRepository.findById(id);
-        if(!optionalSubject.isPresent())
-            throw new SubjectNotFoundException("Subject with id "+id+ " doesn't exist");
-        subjectRepository.delete(optionalSubject.get());
+        Subject subject = getSubjectById(id);
+        subjectRepository.delete(subject);
     }
 
     @Override
